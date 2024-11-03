@@ -1,0 +1,7 @@
+3 4
+1 1 1 1
+1 1 1 1
+1 1 1 1
+1 2 3
+100 100 100 100
+The problem is not balanced! The problem is not balanced! The problem is not balanced!
