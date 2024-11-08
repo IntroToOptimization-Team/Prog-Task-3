@@ -9,11 +9,11 @@ for filename in sorted(os.listdir(test_folder_path)):
         #Parse input
         n, m = map(int, file.readline().strip().split())
         costs = []
+        supply = list(map(int, file.readline().strip().split()))
         for i in range(n):
             arr = list(map(int, file.readline().strip().split()))
             costs.append(arr)
 
-        supply = list(map(int, file.readline().strip().split()))
         demand = list(map(int, file.readline().strip().split()))
 
 

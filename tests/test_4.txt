@@ -1,7 +1,7 @@
 3 4
+140 80 160
 2 3 4 2
 8 4 -1 1
 9 7 3 7
-140 80 160
 60 70 120 130
 The method is not applicable! The method is not applicable! The method is not applicable!
