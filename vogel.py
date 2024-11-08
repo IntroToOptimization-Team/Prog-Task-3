@@ -17,17 +17,17 @@ class VogelMethod:
         for row in available_rows:
             cur_row = costs[row]
 
-            sorted_ = sorted(cur_row[col] for col in available_cols)
+            sorted_ = sorted((cur_row[col], col) for col in available_cols)
             penalty = 0
 
             #If not last available element in a row -> take 2 minimum ones
             if len(sorted_) > 1:
-                penalty = sorted_[1] - sorted_[0]
+                penalty = sorted_[1][0] - sorted_[0][0]
             
             if max_row_penalty < penalty:
                 max_row_penalty = penalty
                 max_row = row
-                min_elem_col = cur_row.index(sorted_[0])
+                min_elem_col = sorted_[0][1]
 
         return (max_row_penalty, max_row, min_elem_col)
     
@@ -44,7 +44,6 @@ class VogelMethod:
         available_rows = self.getAvailableIndexes(n, blocked_rows)
         available_cols = self.getAvailableIndexes(m, blocked_cols)
 
-        #I have no any idea how to name these indexes :(
         max_row_penalty, r_row_index, r_col_index = self.getMaxRow(costs, available_rows, available_cols)
 
         transposed_costs = list(zip(*costs))

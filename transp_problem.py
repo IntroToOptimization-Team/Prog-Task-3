@@ -11,6 +11,18 @@ def isBalanced(supply: list[int], demand: list[int]) -> bool:
     '''
     return sum(supply) == sum(demand)
 
+def isApplicable(n: int, m: int, costs: list[list[int]], supply: list[int], demand: list[int]) -> bool:
+    for i in range(n):
+        for j in range(m):
+            if costs[i][j] < 0:
+                return False
+
+    if any(s < 0 for s in supply) or any(d < 0 for d in demand):
+        return False
+
+    if n == 0 or m == 0:
+        return False
+    return True
 
 
 def transportationTask(parameters: TranspTaskInfo,
@@ -27,13 +39,13 @@ def transportationTask(parameters: TranspTaskInfo,
     n = len(costs)
     m = len(costs[0]) if n > 0 else 0
 
-    if n == 0 or not all(len(costs[i]) > 0 for i in range(n)) :
+    if not isApplicable(n, m, costs, supply, demand):
         raise Exception(Formater.notApplicable())
 
     if not isBalanced(supply, demand):
         raise Exception(Formater.notBalanced())
 
-    res_matrix = [[0 for y in range(m)] for i in range(n)]
+    res_matrix = [[0 for __ in range(m)] for _ in range(n)]
 
     while sum(supply) != 0:
         row, col = approach.getNext(TranspTaskInfo(costs, supply, demand, 
